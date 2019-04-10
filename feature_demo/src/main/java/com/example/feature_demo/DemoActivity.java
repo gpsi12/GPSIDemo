@@ -1,8 +1,7 @@
-package com.example.gps_i.gpsidemo;
+package com.example.feature_demo;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 
 /**
  * Demo模块
@@ -10,9 +9,8 @@ import android.os.PersistableBundle;
 public class DemoActivity extends Activity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate( Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo);
     }
-
 }
