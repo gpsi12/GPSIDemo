@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+/**
+ * 主模块
+ */
 public class MainActivity extends Activity {
 
     private Button bt_001;
