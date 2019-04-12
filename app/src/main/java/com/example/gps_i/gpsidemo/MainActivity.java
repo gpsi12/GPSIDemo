@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.feature_chat.ChatActivity;
 import com.example.feature_demo.DemoActivity;
 import com.example.feature_list.RecyclerViewDemoActivity;
 
@@ -16,6 +17,7 @@ public class MainActivity extends Activity {
 
     private Button bt_001;
     private Button bt_002;
+    private Button bt_003;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,14 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,RecyclerViewDemoActivity.class);
+                startActivity(intent);
+            }
+        });
+        bt_003 = findViewById(R.id.bt_003);
+        bt_003.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,ChatActivity.class);
                 startActivity(intent);
             }
         });

@@ -12,23 +12,23 @@ import android.widget.Toast;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends  RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
+public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private List<ItemBean> mList;
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView titleTextView;
         LinearLayout linearLayout;
 
-        public ViewHolder(View view){
+        public ViewHolder(View view) {
             super(view);
             titleTextView = (TextView) view.findViewById(R.id.item);
             linearLayout = (LinearLayout) view.findViewById(R.id.layout);
         }
     }
 
-    public RecyclerViewAdapter(List<ItemBean> List){
+    public RecyclerViewAdapter(List<ItemBean> List) {
         mList = List;
     }
 
@@ -36,7 +36,7 @@ public class RecyclerViewAdapter extends  RecyclerView.Adapter<RecyclerViewAdapt
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item,viewGroup,false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item, viewGroup, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -52,7 +52,7 @@ public class RecyclerViewAdapter extends  RecyclerView.Adapter<RecyclerViewAdapt
             public void onClick(View v) {
                 int position = viewHolder.getAdapterPosition();
                 ItemBean itemBean1 = mList.get(position);
-                Toast.makeText(v.getContext(),itemBean.getTitle(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), itemBean.getTitle(), Toast.LENGTH_SHORT).show();
             }
         });
     }

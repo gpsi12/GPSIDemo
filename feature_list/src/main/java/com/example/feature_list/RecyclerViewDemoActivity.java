@@ -14,7 +14,7 @@ public class RecyclerViewDemoActivity extends Activity {
     private RecyclerViewAdapter adapter;
 
     @Override
-    protected void onCreate( Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recyclerview);
         initRecyclerView();
@@ -22,7 +22,7 @@ public class RecyclerViewDemoActivity extends Activity {
 
     private void initRecyclerView() {
         initItemBean();
-        recyclerView =findViewById(R.id.recyclerview);
+        recyclerView = findViewById(R.id.recyclerview);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
         adapter = new RecyclerViewAdapter(mList);
@@ -31,8 +31,8 @@ public class RecyclerViewDemoActivity extends Activity {
     }
 
     private void initItemBean() {
-        for (int i=0;i<100;i++){
-            ItemBean bean = new ItemBean(i+" 条");
+        for (int i = 0; i < 100; i++) {
+            ItemBean bean = new ItemBean(i + " 条");
             mList.add(bean);
         }
     }
