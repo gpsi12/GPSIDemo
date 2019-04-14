@@ -2,13 +2,11 @@ package com.example.feature_chat;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Magnifier;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +34,7 @@ public class ChatActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String content = input_text.getText().toString();
+                String reContent = "重复 ".toString();
                 if (!"".equals(content)){
                     Msg msg = new Msg(content,Msg.TYPE_SENT);
                     msgList.add(msg);
@@ -43,7 +42,7 @@ public class ChatActivity extends Activity {
                     msgRV.scrollToPosition(msgList.size()-1);
                     input_text.setText("");
 
-                    Msg msg1 = new Msg(content,Msg.TYPE_RECEIVED);
+                    Msg msg1 = new Msg(reContent+content,Msg.TYPE_RECEIVED);
                     msgList.add(msg1);
                     adapter.notifyItemInserted(msgList.size()-1);
                     msgRV.scrollToPosition(msgList.size()-1);
