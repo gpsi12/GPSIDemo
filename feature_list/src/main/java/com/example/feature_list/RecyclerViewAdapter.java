@@ -16,7 +16,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private List<ItemBean> mList;
 
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView titleTextView;
         LinearLayout linearLayout;
@@ -32,7 +31,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         mList = List;
     }
 
-
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -46,13 +44,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
 
         final ItemBean itemBean = mList.get(i);
-        viewHolder.titleTextView.setText(itemBean.getTitle());
+        viewHolder.titleTextView.setText(itemBean.getName());
         viewHolder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int position = viewHolder.getAdapterPosition();
                 ItemBean itemBean1 = mList.get(position);
-                Toast.makeText(v.getContext(), itemBean.getTitle(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), itemBean.getName(), Toast.LENGTH_SHORT).show();
             }
         });
     }

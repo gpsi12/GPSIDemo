@@ -1,24 +1,31 @@
 package com.example.feature_list;
 
 public class ItemBean {
-    private String Title;
+    private String name;
+    private  String id;
+    private  String order;
 
-    public ItemBean(String Title) {
-        this.Title = Title;
+    public String getName() {
+        return name;
     }
 
-    public String getTitle() {
-        return Title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setTitle(String title) {
-        Title = title;
+    public String getId() {
+        return id;
     }
 
-    @Override
-    public String toString() {
-        return "ItemBean{" +
-                "Title='" + Title + '\'' +
-                '}';
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getOrder() {
+        return order;
+    }
+
+    public void setOrder(String order) {
+        this.order = order;
     }
 }

@@ -28,4 +28,11 @@ dependencies {
     implementation project(':feature_demo')
     implementation project(':feature_list')
     implementation project(':feature_chat')
+    implementation project(':feature_net')
+
+    implementation 'com.amap.api:3dmap:latest.integration'
+    implementation 'com.amap.api:map2d:latest.integration'
+    implementation 'com.amap.api:navi-3dmap:latest.integration'
+    implementation 'com.amap.api:search:latest.integration'
+    implementation 'com.amap.api:location:latest.integration'
 }
