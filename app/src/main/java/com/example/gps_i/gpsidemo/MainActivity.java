@@ -18,6 +18,7 @@ public class MainActivity extends Activity {
     private Button bt_001;
     private Button bt_002;
     private Button bt_003;
+    private Button bt_004;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,14 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this,ChatActivity.class);
+                startActivity(intent);
+            }
+        });
+        bt_003 = findViewById(R.id.bt_004);
+        bt_003.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,MapDemoActivity.class);
                 startActivity(intent);
             }
         });

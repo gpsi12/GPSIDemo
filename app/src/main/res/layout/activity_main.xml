@@ -1,28 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/bt_001"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="cccccc" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/bt_002"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="RecyclerView"
-        app:layout_constraintLeft_toRightOf="@id/bt_001" />
-    <Button
-        android:id="@+id/bt_003"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="聊天"
-        app:layout_constraintLeft_toRightOf="@id/bt_002" />
+        <Button
+            android:id="@+id/bt_001"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="cccccc" />
 
-</android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/bt_002"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RecyclerView"/>
+        <Button
+            android:id="@+id/bt_003"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="聊天" />
+
+        <Button
+            android:id="@+id/bt_004"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2d地图"/>
+
+    </LinearLayout>
+
+</ScrollView>
