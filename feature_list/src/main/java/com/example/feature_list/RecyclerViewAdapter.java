@@ -1,7 +1,11 @@
 package com.example.feature_list;
 
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.ForegroundColorSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +23,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView titleTextView;
         LinearLayout linearLayout;
+        TextView goodsTView;
+        TextView license;
 
         public ViewHolder(View view) {
             super(view);
-            titleTextView = (TextView) view.findViewById(R.id.item);
+            goodsTView = view.findViewById(R.id.goods);
+            license = view.findViewById(R.id.license);
+            titleTextView = (TextView) view.findViewById(R.id.name);
             linearLayout = (LinearLayout) view.findViewById(R.id.layout);
+
         }
     }
 
@@ -42,9 +51,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     //对RecyclerView的子项数据进行赋值
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
+        SpannableString spannableString = new SpannableString("轮胎 1000G");
+        ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(Color.RED);
+        spannableString.setSpan(foregroundColorSpan,0,2, Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+        viewHolder.goodsTView.setText(spannableString);
 
         final ItemBean itemBean = mList.get(i);
         viewHolder.titleTextView.setText(itemBean.getName());
+        viewHolder.license.setText(itemBean.getOrder());
         viewHolder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

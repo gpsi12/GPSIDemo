@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
         bt_001.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,DemoActivity.class);
+                Intent intent = new Intent(MainActivity.this, DemoActivity.class);
                 startActivity(intent);
             }
         });
@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
         bt_002.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,RecyclerViewDemoActivity.class);
+                Intent intent = new Intent(MainActivity.this, RecyclerViewDemoActivity.class);
                 startActivity(intent);
             }
         });
@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
         bt_003.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,ChatActivity.class);
+                Intent intent = new Intent(MainActivity.this, ChatActivity.class);
                 startActivity(intent);
             }
         });
@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
         bt_003.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,MapDemoActivity.class);
+                Intent intent = new Intent(MainActivity.this, MapDemoActivity.class);
                 startActivity(intent);
             }
         });
