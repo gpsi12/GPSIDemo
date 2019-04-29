@@ -4,6 +4,8 @@ import android.app.Application;
 
 import com.example.feature_net.Mokgo;
 
+import cn.jpush.android.api.JPushInterface;
+
 public class MApplication extends Application {
 
     @Override
@@ -14,5 +16,7 @@ public class MApplication extends Application {
 
     private void init(){
         Mokgo.init(this);
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
     }
 }

@@ -9,7 +9,18 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+        }
+        manifestPlaceholders = [
+                JPUSH_APPKEY : "7e422e2f7daa2a0a44633f1b",
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_CHANNEL: "developer-default",
+        ]
+
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -35,4 +46,7 @@ dependencies {
     implementation 'com.amap.api:navi-3dmap:latest.integration'
     implementation 'com.amap.api:search:latest.integration'
     implementation 'com.amap.api:location:latest.integration'
+
+    implementation 'cn.jiguang.sdk:jpush:3.2.0'
+    implementation 'cn.jiguang.sdk:jcore:1.2.7'
 }

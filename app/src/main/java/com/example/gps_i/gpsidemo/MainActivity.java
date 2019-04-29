@@ -20,6 +20,11 @@ public class MainActivity extends Activity {
     private Button bt_003;
     private Button bt_004;
 
+    public static boolean isForeground = false;
+    public static final String MESSAGE_RECEIVED_ACTION = "com.example.jpushdemo.MESSAGE_RECEIVED_ACTION";
+    public static final String KEY_MESSAGE = "message";
+    public static final String KEY_EXTRAS = "extras";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
