@@ -6,6 +6,9 @@ import android.os.Bundle;
 import com.amap.api.maps2d.AMap;
 import com.amap.api.maps2d.MapView;
 
+/**
+ *
+ */
 public class MapDemoActivity extends Activity {
     MapView mMapView = null;
 

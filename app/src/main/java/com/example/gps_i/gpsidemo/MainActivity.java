@@ -3,6 +3,7 @@ package com.example.gps_i.gpsidemo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -35,6 +36,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DemoActivity.class);
                 startActivity(intent);
+//                finish();
             }
         });
         bt_002 = findViewById(R.id.bt_002);
@@ -62,4 +64,5 @@ public class MainActivity extends Activity {
             }
         });
     }
+
 }

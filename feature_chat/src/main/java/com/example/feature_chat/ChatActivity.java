@@ -11,6 +11,9 @@ import android.widget.EditText;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 简单聊天框
+ */
 public class ChatActivity extends Activity {
     private List<Msg> msgList = new ArrayList<>();
     private EditText input_text;

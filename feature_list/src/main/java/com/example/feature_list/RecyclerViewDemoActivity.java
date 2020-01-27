@@ -18,6 +18,9 @@ import com.lzy.okgo.model.Response;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 获取网络请求并列表展示
+ */
 public class RecyclerViewDemoActivity extends Activity {
     private RecyclerView recyclerView;
     private List<ItemBean> mList = new ArrayList<>();
