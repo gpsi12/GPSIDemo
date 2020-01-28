@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
+    android:id="@+id/activity_main">
 
-    <EditText
-        android:hint="o_O"
-        android:layout_width="wrap_content"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.example.feature_demo.BottomView
+        android:id="@+id/bv_main"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:maxLength="10"
-        android:inputType="text"
-        />
-</LinearLayout>
+        android:layout_alignParentBottom="true"/>
+
+
+
+<!--    <android.support.v4.view.ViewPager-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:id="@+id/viewpager"-->
+<!--        android:layout_weight="1"/>-->
+<!--    <TableLayout-->
+<!--        android:id="@+id/viewpagertab"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="?actionBarSize"-->
+<!--        android:paddingBottom="4dp"-->
+<!--        />-->
+</RelativeLayout>
