@@ -1,6 +1,8 @@
 package com.example.feature_demo.fragment;
 
+import android.app.Service;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,13 +11,21 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.example.feature_demo.BottomView;
 import com.example.feature_demo.R;
+import com.example.feature_demo.service.DomeService;
 
 public class GtFragment extends Fragment {
 
     private boolean mLoadData;
     private boolean isFirstStart;
+
+    private Button sbt_starts;
+    private Button  sbt_binds;
+    private Button  sbt_stops;
+    private Button  sbt_unbind;
 
     @Override
     public void onAttach(Context context) {
@@ -34,6 +44,12 @@ public class GtFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_gt, null);
         Log.i("GPSI_Fragment：", "页面2-创建视图");
+//        Intent intent = new Intent(getActivity(),DomeService.class);
+        sbt_starts = view.findViewById(R.id.sbt_starts);
+        sbt_binds = view.findViewById(R.id.sbt_binds);
+        sbt_stops = view.findViewById(R.id.sbt_stops);
+        sbt_unbind = view.findViewById(R.id.sbt_unbind);
+        init();
         return view;
 
     }
@@ -45,7 +61,7 @@ public class GtFragment extends Fragment {
         if (isFirstStart){
             loadDataStart();
         }
-        Log.i("GPSI_LOAD", "页面2-是否可见--" + isVisibleToUser);
+        Log.i("GPSI_Fragment", "页面2-是否可见--" + isVisibleToUser);
     }
 
     protected void loadDataStart() {
@@ -55,7 +71,7 @@ public class GtFragment extends Fragment {
     }
 
     protected void loadDataStart2(){
-        Log.i("GPSI_LOAD", "页面2-加载数据!!!!!!");
+        Log.i("GPSI_Fragment", "页面2-加载数据!!!!!!");
     }
 
     @Override
@@ -106,5 +122,33 @@ public class GtFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         Log.i("GPSI_Fragment：", "页面2-Fragment和Activity接触关联");
+    }
+
+    public void init(){
+        sbt_starts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().startService(new Intent(getActivity(),DomeService.class));
+            }
+        });
+        sbt_binds.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+        sbt_stops.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().stopService(new Intent(getActivity(),DomeService.class));
+            }
+        });
+        sbt_unbind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
     }
 }

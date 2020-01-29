@@ -1,6 +1,7 @@
 package com.example.feature_demo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -11,6 +12,7 @@ import com.example.feature_demo.fragment.GoFragment;
 import com.example.feature_demo.fragment.GtFragment;
 import com.example.feature_demo.fragment.GthreeFragment;
 import com.example.feature_demo.fragment.MyAdapter;
+import com.example.feature_demo.service.DomeService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,8 +34,7 @@ public class DemoActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo);
         Log.i("GPSI", "onCreate()-正在创建，此时Activity可见但不再前台");
-
-        mContext = this;
+//        startService(new Intent(this,DomeService.class));
         initView();
 //        FragmentPagerItems pagerItems = new FragmentPagerItems(this);
 //        pagerItems.add(FragmentPagerItem.of("1", GoFragment.class));
@@ -45,8 +46,8 @@ public class DemoActivity extends FragmentActivity {
 //        mViewPager.setAdapter(adapter);
 
         mFragmentList = new ArrayList<Fragment>();
-        mFragmentList.add(new GtFragment());
         mFragmentList.add(new GoFragment());
+        mFragmentList.add(new GtFragment());
         mFragmentList.add(new GthreeFragment());
         MyAdapter myAdapter = new MyAdapter(getSupportFragmentManager(),mFragmentList);
         mViewPager.setAdapter(myAdapter);

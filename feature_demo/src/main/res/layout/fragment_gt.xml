@@ -1,11 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/sbt_starts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="StartService绑定服务" />
+
+    <Button
+        android:id="@+id/sbt_binds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/sbt_starts"
+        android:text="BindService绑定服务" />
+
+    <Button
+        android:id="@+id/sbt_stops"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sbt_starts"
+        android:text="stopService解绑服务" />
+
+    <Button
+        android:id="@+id/sbt_unbind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sbt_binds"
+        android:layout_alignLeft="@id/sbt_binds"
+        android:text="unBind解绑服务" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="G2"/>
-</FrameLayout>
+        android:text="G2" />
+
+</RelativeLayout>

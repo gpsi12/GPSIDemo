@@ -5,6 +5,7 @@
         <activity android:name=".DemoActivity"
             android:theme="@style/Theme.AppCompat"/>
 
+        <service android:name=".service.DomeService"/>
 
     </application>
 </manifest>
