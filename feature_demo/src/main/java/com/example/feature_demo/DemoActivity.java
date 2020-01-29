@@ -45,8 +45,8 @@ public class DemoActivity extends FragmentActivity {
 //        mViewPager.setAdapter(adapter);
 
         mFragmentList = new ArrayList<Fragment>();
-        mFragmentList.add(new GoFragment());
         mFragmentList.add(new GtFragment());
+        mFragmentList.add(new GoFragment());
         mFragmentList.add(new GthreeFragment());
         MyAdapter myAdapter = new MyAdapter(getSupportFragmentManager(),mFragmentList);
         mViewPager.setAdapter(myAdapter);
@@ -71,6 +71,7 @@ public class DemoActivity extends FragmentActivity {
 
     private void initView() {
         mViewPager = findViewById(R.id.viewpager);
+        mViewPager.setOffscreenPageLimit(2);
         bv_main = findViewById(R.id.bv_main);
         bv_main.setOnPageSelectListener(new BottomView.IOnPageSelectedListener() {
             @Override
