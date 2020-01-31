@@ -3,10 +3,12 @@ package com.example.feature_demo.fragment;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,18 +16,24 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.feature_demo.BottomView;
+import com.example.feature_demo.MyReceiver;
 import com.example.feature_demo.R;
 import com.example.feature_demo.service.DomeService;
 
-public class GtFragment extends Fragment {
+public class GtFragment extends Fragment implements View.OnClickListener {
 
     private boolean mLoadData;
     private boolean isFirstStart;
+    private MyReceiver myReceiver;
+    private LocalBroadcastManager localBroadcastManager;
 
     private Button sbt_starts;
     private Button  sbt_binds;
     private Button  sbt_stops;
     private Button  sbt_unbind;
+
+    private Button bt_OPrecess;
+    private Button bt_bdgb;
 
     @Override
     public void onAttach(Context context) {
@@ -45,13 +53,23 @@ public class GtFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_gt, null);
         Log.i("GPSI_Fragment：", "页面2-创建视图");
 //        Intent intent = new Intent(getActivity(),DomeService.class);
+        localBroadcastManager = LocalBroadcastManager.getInstance(getContext());
+        //动态注册俄本地广播接收器
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.gpsidemo.MY_BROADCAST_BD");//自定义广播
+        intentFilter.addAction("android.intent.action.SCREEN_OFF");//关屏幕
+        intentFilter.addAction("android.intent.action.SCREEN_ON");//点亮屏幕
+        myReceiver = new MyReceiver();
+        localBroadcastManager.registerReceiver(myReceiver,intentFilter);
+
         sbt_starts = view.findViewById(R.id.sbt_starts);
         sbt_binds = view.findViewById(R.id.sbt_binds);
         sbt_stops = view.findViewById(R.id.sbt_stops);
         sbt_unbind = view.findViewById(R.id.sbt_unbind);
+        bt_bdgb = view.findViewById(R.id.bt_bdgb);
+        bt_OPrecess = view.findViewById(R.id.bt_OPrecess);
         init();
         return view;
-
     }
 
     @Override
@@ -115,6 +133,9 @@ public class GtFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (localBroadcastManager !=null){
+            localBroadcastManager.unregisterReceiver(myReceiver);
+        }
         Log.i("GPSI_Fragment：", "页面2-即将销毁");
     }
 
@@ -149,6 +170,25 @@ public class GtFragment extends Fragment {
 
             }
         });
+        bt_bdgb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent("com.gpsidemo.MY_BROADCAST_BD");
+
+                localBroadcastManager.sendBroadcast(intent);
+            }
+        });
+        bt_OPrecess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onClick(View view) {
 
     }
 }

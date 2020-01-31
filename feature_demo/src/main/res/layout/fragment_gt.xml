@@ -30,6 +30,19 @@
         android:layout_below="@id/sbt_binds"
         android:layout_alignLeft="@id/sbt_binds"
         android:text="unBind解绑服务" />
+    <Button
+        android:id="@+id/bt_bdgb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="发送本地广播"
+        android:layout_below="@id/sbt_stops"/>
+    <Button
+        android:id="@+id/bt_OPrecess"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sbt_unbind"
+        android:layout_alignLeft="@+id/sbt_unbind"
+        android:text="Activity单开进程"/>
 
     <TextView
         android:layout_width="match_parent"

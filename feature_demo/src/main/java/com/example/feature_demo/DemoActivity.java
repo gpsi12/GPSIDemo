@@ -12,7 +12,6 @@ import com.example.feature_demo.fragment.GoFragment;
 import com.example.feature_demo.fragment.GtFragment;
 import com.example.feature_demo.fragment.GthreeFragment;
 import com.example.feature_demo.fragment.MyAdapter;
-import com.example.feature_demo.service.DomeService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +23,6 @@ import java.util.List;
 public class DemoActivity extends FragmentActivity {
 
     private ViewPager mViewPager;
-    private Context mContext;
     private BottomView bv_main;
     private List<Fragment> mFragmentList;
 

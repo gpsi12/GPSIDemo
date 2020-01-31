@@ -6,6 +6,7 @@
             android:theme="@style/Theme.AppCompat"/>
 
         <service android:name=".service.DomeService"/>
+        <receiver android:name=".MyReceiver"/>
 
     </application>
 </manifest>
