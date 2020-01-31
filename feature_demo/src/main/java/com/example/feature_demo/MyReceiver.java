@@ -19,6 +19,8 @@ public class MyReceiver extends BroadcastReceiver {
             Log.i("GPSI","关闭屏幕");
         }if (action.equals("com.gpsidemo.MY_BROADCAST_BD")){
             Log.i("GPSI","接收到自定义广播。");
+        }if (action.equals("com.example.gps.ALONEDEMO")){
+            Log.i("GPSI","接受单开进程Activity的广播");
         }
 
     }

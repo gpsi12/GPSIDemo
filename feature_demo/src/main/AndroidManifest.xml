@@ -5,8 +5,13 @@
         <activity android:name=".DemoActivity"
             android:theme="@style/Theme.AppCompat"/>
 
+        <activity android:name=".AloneActivity"
+            android:process=":alonedemo"
+            />
+
         <service android:name=".service.DomeService"/>
-        <receiver android:name=".MyReceiver"/>
+        <receiver android:name=".MyReceiver">
+        </receiver>
 
     </application>
 </manifest>

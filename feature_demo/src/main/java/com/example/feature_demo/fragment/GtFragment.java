@@ -1,6 +1,7 @@
 package com.example.feature_demo.fragment;
 
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.example.feature_demo.AloneActivity;
 import com.example.feature_demo.BottomView;
 import com.example.feature_demo.MyReceiver;
 import com.example.feature_demo.R;
@@ -25,7 +27,7 @@ public class GtFragment extends Fragment implements View.OnClickListener {
     private boolean mLoadData;
     private boolean isFirstStart;
     private MyReceiver myReceiver;
-    private LocalBroadcastManager localBroadcastManager;
+//    private BroadcastReceiver localBroadcastManager;
 
     private Button sbt_starts;
     private Button  sbt_binds;
@@ -53,14 +55,17 @@ public class GtFragment extends Fragment implements View.OnClickListener {
         View view = inflater.inflate(R.layout.fragment_gt, null);
         Log.i("GPSI_Fragment：", "页面2-创建视图");
 //        Intent intent = new Intent(getActivity(),DomeService.class);
-        localBroadcastManager = LocalBroadcastManager.getInstance(getContext());
+//        localBroadcastManager = new MyReceiver();
+//        localBroadcastManager = LocalBroadcastManager.getInstance(getContext());
         //动态注册俄本地广播接收器
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("com.gpsidemo.MY_BROADCAST_BD");//自定义广播
+        intentFilter.addAction("com.example.gps.ALONEDEMO");
         intentFilter.addAction("android.intent.action.SCREEN_OFF");//关屏幕
         intentFilter.addAction("android.intent.action.SCREEN_ON");//点亮屏幕
         myReceiver = new MyReceiver();
-        localBroadcastManager.registerReceiver(myReceiver,intentFilter);
+        getActivity().registerReceiver(myReceiver,intentFilter);
+//        localBroadcastManager.registerReceiver(myReceiver,intentFilter);
 
         sbt_starts = view.findViewById(R.id.sbt_starts);
         sbt_binds = view.findViewById(R.id.sbt_binds);
@@ -133,8 +138,8 @@ public class GtFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (localBroadcastManager !=null){
-            localBroadcastManager.unregisterReceiver(myReceiver);
+        if (myReceiver !=null){
+            getActivity().unregisterReceiver(myReceiver);
         }
         Log.i("GPSI_Fragment：", "页面2-即将销毁");
     }
@@ -175,13 +180,14 @@ public class GtFragment extends Fragment implements View.OnClickListener {
             public void onClick(View view) {
                 Intent intent = new Intent("com.gpsidemo.MY_BROADCAST_BD");
 
-                localBroadcastManager.sendBroadcast(intent);
+                getActivity().sendBroadcast(intent);
             }
         });
         bt_OPrecess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(),AloneActivity.class);
+                startActivity(intent);
             }
         });
 
