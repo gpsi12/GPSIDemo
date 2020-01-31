@@ -44,6 +44,13 @@
         android:layout_alignLeft="@+id/sbt_unbind"
         android:text="Activity单开进程"/>
 
+    <Button
+        android:id="@+id/bt_hqlxr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bt_bdgb"
+        android:text="获取联系人"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

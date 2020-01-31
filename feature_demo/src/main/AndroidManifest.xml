@@ -8,10 +8,15 @@
         <activity android:name=".AloneActivity"
             android:process=":alonedemo"
             />
+        <activity android:name=".ProviderPNumberActivity"/>
 
         <service android:name=".service.DomeService"/>
         <receiver android:name=".MyReceiver">
         </receiver>
 
+
+
     </application>
+
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 </manifest>

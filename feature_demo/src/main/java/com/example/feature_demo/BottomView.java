@@ -7,7 +7,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
+/**
+ *
+ */
 public class BottomView extends LinearLayout implements View.OnClickListener {
 
     private TextView tx_one = null;

@@ -19,6 +19,7 @@ import android.widget.Button;
 import com.example.feature_demo.AloneActivity;
 import com.example.feature_demo.BottomView;
 import com.example.feature_demo.MyReceiver;
+import com.example.feature_demo.ProviderPNumberActivity;
 import com.example.feature_demo.R;
 import com.example.feature_demo.service.DomeService;
 
@@ -36,6 +37,7 @@ public class GtFragment extends Fragment implements View.OnClickListener {
 
     private Button bt_OPrecess;
     private Button bt_bdgb;
+    private Button bt_hqlxr;
 
     @Override
     public void onAttach(Context context) {
@@ -73,6 +75,7 @@ public class GtFragment extends Fragment implements View.OnClickListener {
         sbt_unbind = view.findViewById(R.id.sbt_unbind);
         bt_bdgb = view.findViewById(R.id.bt_bdgb);
         bt_OPrecess = view.findViewById(R.id.bt_OPrecess);
+        bt_hqlxr = view.findViewById(R.id.bt_hqlxr);
         init();
         return view;
     }
@@ -183,18 +186,18 @@ public class GtFragment extends Fragment implements View.OnClickListener {
                 getActivity().sendBroadcast(intent);
             }
         });
-        bt_OPrecess.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(),AloneActivity.class);
-                startActivity(intent);
-            }
-        });
+        bt_OPrecess.setOnClickListener(this);
+        bt_hqlxr.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View view) {
 
+        if (view.getId() == R.id.bt_hqlxr){
+            startActivity(new Intent(getActivity(), ProviderPNumberActivity.class));
+        }if (view.getId() == R.id.bt_OPrecess){
+            startActivity(new Intent(getActivity(),AloneActivity.class));
+        }
     }
 }
