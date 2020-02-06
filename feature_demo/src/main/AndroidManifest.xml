@@ -14,9 +14,13 @@
         <receiver android:name=".MyReceiver">
         </receiver>
 
-
-
+        <!-- 向外共享数据的Provider 增删改查,对外共享：android:exported="true" -->
+        <provider
+            android:authorities="com.gpsidemo.person"
+            android:name=".PersonContentProvider"
+            />
     </application>
 
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 </manifest>

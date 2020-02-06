@@ -29,7 +29,7 @@ public class DemoActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_demo);
-        Log.i("GPSI", "onCreate()-正在创建，此时Activity可见但不再前台");
+        Log.i("GPSI_Activity", "onCreate()-正在创建，此时Activity可见但不再前台");
 //        startService(new Intent(this,DomeService.class));
         initView();
 //        FragmentPagerItems pagerItems = new FragmentPagerItems(this);
@@ -121,4 +121,6 @@ public class DemoActivity extends FragmentActivity {
         super.onRestart();
         Log.i("GPSI", "onRestart()-后台切换到前台，不可见到可见-表示Activity重新启动");
     }
+
+
 }
