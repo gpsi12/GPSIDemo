@@ -71,7 +71,6 @@ public class BottomView extends LinearLayout implements View.OnClickListener {
 
         }
     }
-
     /**
      * s刷新按钮状态
      * @param viewId

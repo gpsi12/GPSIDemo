@@ -21,7 +21,7 @@ import cn.jpush.android.api.JPushInterface;
  * 2) 接收不到自定义消息
  */
 public class MyReceiver extends BroadcastReceiver {
-	private static final String TAG = "测试";
+	private static final String TAG = "GPSI";
 
 
 	@Override

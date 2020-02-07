@@ -22,7 +22,14 @@
         android:layout_height="wrap_content"
         android:text="Handler简单使用"/>
 
+    <Button
+        android:id="@+id/bt_asynctask"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="执行AsyncTask"/>
+
     <TextView
+        android:id="@+id/tv_test"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
