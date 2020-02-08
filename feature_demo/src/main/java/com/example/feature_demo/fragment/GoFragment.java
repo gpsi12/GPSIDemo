@@ -30,10 +30,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class GoFragment extends GtFragment {
 
-    private Button bt_insert_cp;
-    private Button bt_threadpe;
-    private Button bt_handler;
-    private Button bt_asynctask;
+    private Button bt_insert_cp,bt_threadpe,bt_handler,bt_asynctask;
 
     private TextView tv_test;
 
@@ -65,6 +62,7 @@ public class GoFragment extends GtFragment {
         myHandler = new MyHandler(getActivity());
         Log.i("GPSI_Fragment：", "创建视图");
         inits();
+
         return view;
     }
 
@@ -237,27 +235,36 @@ public class GoFragment extends GtFragment {
         gDemoloadThread.start();
     }
 
-
     /**
      * 步骤1：
      * 创建AsyncTask子类
      * 继承AsyncTask类，为三个范型参数制定类型，若不使用可以用lang.Void代替
      * ，根据需求，在Async Task子类内部实现核心方法
+     *  第一个范型：doInBackground   入参类型
+     *  第二个范型：onProgressUpdate 进度变化的参数类型
+     *  第三个范型：onPostExecute    入参类型，同样是doInBackground的返回值类型
      */
-    private class MyAsyncTask extends AsyncTask<String, Integer, String> {
+    private static class MyAsyncTask extends AsyncTask<String, Integer, String> {
+
+
+        private WeakReference<TextView> textView;
+
+        private MyAsyncTask(WeakReference<TextView> textView){
+            this.textView =textView;
+        }
 
         //执行 线程任务前的操作，根据需求复写
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            tv_test.setText("加载中。。。");
+            textView.get().setText("加载中");
         }
 
         /**
          * 接受输入参数，执行任务中的耗时操作、返回线程任务执行的结果
          * 必须复写，从而定义线程任务
          *
-         * @param objects
+         * @param strings
          * @return
          */
         @Override
@@ -283,7 +290,7 @@ public class GoFragment extends GtFragment {
         @Override
         protected void onProgressUpdate(Integer... values) {
             super.onProgressUpdate(values);
-            tv_test.setText(values[0] + "");
+            textView.get().setText(values[0] + "");
         }
 
         /**
@@ -295,7 +302,8 @@ public class GoFragment extends GtFragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            tv_test.setText(s + "完成");
+            textView.get().setText(s + "完成");
+
         }
 
         /**
@@ -315,9 +323,9 @@ public class GoFragment extends GtFragment {
          * 创建AsyncTask子类的实例对象（即 任务实例）
          * AsyncTask子类的实例必须在UI线程中创建
          */
-        if (myAsyncTask == null){
-            myAsyncTask = new MyAsyncTask();
-        }
+//        if (myAsyncTask == null){
+            myAsyncTask = new MyAsyncTask(new WeakReference<>(tv_test));
+//        }
 
         /**
          * 步骤3：
@@ -328,8 +336,9 @@ public class GoFragment extends GtFragment {
          *      onPreExecute() 、doInBackground()、onProgressUpdate() 、onPostExecute()
          *  4.不能手动调用上述方法
          */
-
-        myAsyncTask.execute(new String[]{"1", "2", "3"});
+        String[] strArray = new String[]{"1", "2", "3","4","5"};
+        //strArray doInBackground的入参
+        myAsyncTask.execute(strArray);
     }
 
 
