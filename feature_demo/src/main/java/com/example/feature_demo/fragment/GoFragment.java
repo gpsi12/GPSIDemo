@@ -121,6 +121,11 @@ public class GoFragment extends GtFragment {
         if (myAsyncTask != null) {
             myAsyncTask.cancel(true);
         }
+        //将myHandler的回调和发送的消息移除掉，彻底解决内存泄漏
+        if (myHandler != null){
+            myHandler.removeCallbacksAndMessages(null);
+            myHandler = null;
+        }
     }
 
     public void inits() {

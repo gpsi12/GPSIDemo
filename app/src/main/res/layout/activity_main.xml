@@ -13,12 +13,14 @@
 
         <Button
             android:id="@+id/bt_001"
+            android:textAllCaps="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="cccccc" />
 
         <Button
             android:id="@+id/bt_002"
+            android:textAllCaps="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="RecyclerView" />

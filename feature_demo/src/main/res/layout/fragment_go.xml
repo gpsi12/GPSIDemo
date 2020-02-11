@@ -13,17 +13,20 @@
 
     <Button
         android:id="@+id/bt_threadpe"
+        android:textAllCaps="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="超线程ThreadPoolExecutor"/>
     <Button
         android:id="@+id/bt_handler"
+        android:textAllCaps="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Handler简单使用"/>
 
     <Button
         android:id="@+id/bt_asynctask"
+        android:textAllCaps="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="执行AsyncTask"/>

@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:textAllCaps="false"
     android:layout_height="match_parent">
 
     <Button
         android:id="@+id/sbt_starts"
+        android:textAllCaps="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="StartService绑定服务" />
+        android:text="StartService开启服务" />
 
     <Button
         android:id="@+id/sbt_binds"
+        android:textAllCaps="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/sbt_starts"
@@ -18,13 +21,15 @@
 
     <Button
         android:id="@+id/sbt_stops"
+        android:textAllCaps="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/sbt_starts"
-        android:text="stopService解绑服务" />
+        android:text="stopService停止服务" />
 
     <Button
         android:id="@+id/sbt_unbind"
+        android:textAllCaps="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/sbt_binds"
@@ -38,6 +43,7 @@
         android:layout_below="@id/sbt_stops"/>
     <Button
         android:id="@+id/bt_OPrecess"
+        android:textAllCaps="false"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sbt_unbind"

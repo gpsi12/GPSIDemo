@@ -105,6 +105,12 @@ public class DemoActivity extends FragmentActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        Log.i("GPSI", "onResume()-获得焦点，可见且在前台并开始活动");
+    }
+
+    @Override
     protected void onStop() {
         super.onStop();
         Log.i("GPSI", "onStop()-即将停止，可以做稍微重量级回收工作");

@@ -1,15 +1,14 @@
 package com.example.feature_demo.fragment;
 
-import android.app.Service;
-import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
+import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +16,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.feature_demo.AloneActivity;
-import com.example.feature_demo.BottomView;
 import com.example.feature_demo.MyReceiver;
 import com.example.feature_demo.ProviderPNumberActivity;
 import com.example.feature_demo.R;
 import com.example.feature_demo.service.DomeService;
+
+
 
 public class GtFragment extends Fragment implements View.OnClickListener {
 
@@ -31,13 +31,31 @@ public class GtFragment extends Fragment implements View.OnClickListener {
 //    private BroadcastReceiver localBroadcastManager;
 
     private Button sbt_starts;
-    private Button  sbt_binds;
-    private Button  sbt_stops;
-    private Button  sbt_unbind;
+    private Button sbt_binds;
+    private Button sbt_stops;
+    private Button sbt_unbind;
 
     private Button bt_OPrecess;
     private Button bt_bdgb;
     private Button bt_hqlxr;
+
+    private String TAG = "GPSI";
+
+    private DomeService.DomeBinder mBinder;
+    private ServiceConnection mConnection = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            Log.i(TAG,"onServiceConnected:"+name.toString());
+            mBinder = (DomeService.DomeBinder) service;
+            mBinder.doTask();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            //进程被不正常kill掉后调用
+            Log.i(TAG,"onServiceDisconnected:"+name.toString());
+        }
+    };
 
     @Override
     public void onAttach(Context context) {
@@ -66,7 +84,7 @@ public class GtFragment extends Fragment implements View.OnClickListener {
         intentFilter.addAction("android.intent.action.SCREEN_OFF");//关屏幕
         intentFilter.addAction("android.intent.action.SCREEN_ON");//点亮屏幕
         myReceiver = new MyReceiver();
-        getActivity().registerReceiver(myReceiver,intentFilter);
+        getActivity().registerReceiver(myReceiver, intentFilter);
 //        localBroadcastManager.registerReceiver(myReceiver,intentFilter);
 
         sbt_starts = view.findViewById(R.id.sbt_starts);
@@ -84,7 +102,7 @@ public class GtFragment extends Fragment implements View.OnClickListener {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         mLoadData = isVisibleToUser;
-        if (isFirstStart){
+        if (isFirstStart) {
             loadDataStart();
         }
         Log.i("GPSI_Fragment", "页面2-是否可见--" + isVisibleToUser);
@@ -92,11 +110,11 @@ public class GtFragment extends Fragment implements View.OnClickListener {
 
     protected void loadDataStart() {
         if (mLoadData) {
-           loadDataStart2();
+            loadDataStart2();
         }
     }
 
-    protected void loadDataStart2(){
+    protected void loadDataStart2() {
         Log.i("GPSI_Fragment", "页面2-加载数据!!!!!!");
     }
 
@@ -141,7 +159,7 @@ public class GtFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (myReceiver !=null){
+        if (myReceiver != null && getActivity() != null) {
             getActivity().unregisterReceiver(myReceiver);
         }
         Log.i("GPSI_Fragment：", "页面2-即将销毁");
@@ -153,29 +171,30 @@ public class GtFragment extends Fragment implements View.OnClickListener {
         Log.i("GPSI_Fragment：", "页面2-Fragment和Activity接触关联");
     }
 
-    public void init(){
+    public void init() {
         sbt_starts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().startService(new Intent(getActivity(),DomeService.class));
+                getActivity().startService(new Intent(getActivity(), DomeService.class));
             }
         });
         sbt_binds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(),DomeService.class);
+                getActivity().bindService(intent,mConnection,Context.BIND_AUTO_CREATE);
             }
         });
         sbt_stops.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().stopService(new Intent(getActivity(),DomeService.class));
+                getActivity().stopService(new Intent(getActivity(), DomeService.class));
             }
         });
         sbt_unbind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                getActivity().unbindService(mConnection);
             }
         });
         bt_bdgb.setOnClickListener(new View.OnClickListener() {
@@ -194,10 +213,11 @@ public class GtFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-        if (view.getId() == R.id.bt_hqlxr){
+        if (view.getId() == R.id.bt_hqlxr) {
             startActivity(new Intent(getActivity(), ProviderPNumberActivity.class));
-        }if (view.getId() == R.id.bt_OPrecess){
-            startActivity(new Intent(getActivity(),AloneActivity.class));
+        }
+        if (view.getId() == R.id.bt_OPrecess) {
+            startActivity(new Intent(getActivity(), AloneActivity.class));
         }
     }
 }
