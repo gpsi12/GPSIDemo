@@ -11,7 +11,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         ndk {
-            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86'
         }
         manifestPlaceholders = [
                 JPUSH_APPKEY : "7e422e2f7daa2a0a44633f1b",
@@ -40,6 +40,7 @@ dependencies {
     implementation project(':feature_list')
     implementation project(':feature_chat')
     implementation project(':feature_net')
+    implementation project(':feature_login')
 
 //    implementation 'com.amap.api:3dmap:latest.integration'
     implementation 'com.amap.api:map2d:latest.integration'

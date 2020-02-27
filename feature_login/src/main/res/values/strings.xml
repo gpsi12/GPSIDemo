@@ -1,0 +1,8 @@
+<resources>
+    <string name="login_app_name">feature_login</string>
+    <string name="login_button_login_success">模拟登录</string>
+    <string name="login_hint_login_username">请输入用户名</string>
+    <string name="login_hint_login_password">请输入密码</string>
+    <string name="login_error_empty_usernmae">用户名不能为空</string>
+    <string name="login_error_empty_password">密码不能为空</string>
+</resources>

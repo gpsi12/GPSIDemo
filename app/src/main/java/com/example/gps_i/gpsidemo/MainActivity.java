@@ -3,13 +3,13 @@ package com.example.gps_i.gpsidemo;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.feature_chat.ChatActivity;
 import com.example.feature_demo.DemoActivity;
 import com.example.feature_list.RecyclerViewDemoActivity;
+import com.example.feature_login.LoginActivity;
 
 /**
  * 主模块
@@ -65,4 +65,7 @@ public class MainActivity extends Activity {
         });
     }
 
+    public void openLogin(View view) {
+        LoginActivity.newIsntance(this);
+    }
 }
