@@ -251,7 +251,6 @@ public class GoFragment extends GtFragment {
      */
     private static class MyAsyncTask extends AsyncTask<String, Integer, String> {
 
-
         private WeakReference<TextView> textView;
 
         private MyAsyncTask(WeakReference<TextView> textView){

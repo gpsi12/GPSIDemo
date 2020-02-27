@@ -14,7 +14,6 @@ import com.example.feature_demo.fragment.MyAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
  * Demo模块
  */
@@ -23,7 +22,6 @@ public class DemoActivity extends FragmentActivity {
     private ViewPager mViewPager;
     private BottomView bv_main;
     private List<Fragment> mFragmentList;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +75,6 @@ public class DemoActivity extends FragmentActivity {
             }
         });
     }
-
 
     @Override
     protected void onStart() {

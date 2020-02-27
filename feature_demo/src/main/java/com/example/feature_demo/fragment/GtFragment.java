@@ -21,23 +21,13 @@ import com.example.feature_demo.ProviderPNumberActivity;
 import com.example.feature_demo.R;
 import com.example.feature_demo.service.DomeService;
 
-
-
 public class GtFragment extends Fragment implements View.OnClickListener {
 
     private boolean mLoadData;
     private boolean isFirstStart;
     private MyReceiver myReceiver;
-//    private BroadcastReceiver localBroadcastManager;
 
-    private Button sbt_starts;
-    private Button sbt_binds;
-    private Button sbt_stops;
-    private Button sbt_unbind;
-
-    private Button bt_OPrecess;
-    private Button bt_bdgb;
-    private Button bt_hqlxr;
+    private Button sbt_starts,sbt_binds,sbt_stops,sbt_unbind,bt_OPrecess,bt_bdgb,bt_hqlxr;
 
     private String TAG = "GPSI";
 
@@ -80,7 +70,7 @@ public class GtFragment extends Fragment implements View.OnClickListener {
         //动态注册俄本地广播接收器
         IntentFilter intentFilter = new IntentFilter();
         intentFilter.addAction("com.gpsidemo.MY_BROADCAST_BD");//自定义广播
-        intentFilter.addAction("com.example.gps.ALONEDEMO");
+        intentFilter.addAction("com.example.gps.ALONEDEMO");//单开启进程的
         intentFilter.addAction("android.intent.action.SCREEN_OFF");//关屏幕
         intentFilter.addAction("android.intent.action.SCREEN_ON");//点亮屏幕
         myReceiver = new MyReceiver();
@@ -201,7 +191,6 @@ public class GtFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent("com.gpsidemo.MY_BROADCAST_BD");
-
                 getActivity().sendBroadcast(intent);
             }
         });
@@ -217,6 +206,7 @@ public class GtFragment extends Fragment implements View.OnClickListener {
             startActivity(new Intent(getActivity(), ProviderPNumberActivity.class));
         }
         if (view.getId() == R.id.bt_OPrecess) {
+            //单开一个进程
             startActivity(new Intent(getActivity(), AloneActivity.class));
         }
     }
