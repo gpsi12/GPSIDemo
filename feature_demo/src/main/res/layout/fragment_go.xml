@@ -31,6 +31,32 @@
         android:layout_height="wrap_content"
         android:text="执行AsyncTask"/>
 
+    <Button
+        android:text="fail_fast"
+        android:id="@+id/bt_fail_fast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:text="--------------"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="bt_fail_fast"/>
+
+    <Button
+        android:id="@+id/bt_SureFaceView01"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SureFaceView01"/>
+    <Button
+        android:id="@+id/bt_SureFaceV02"
+        android:textAllCaps="false"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SureFaceView02"/>
+
+
     <TextView
         android:id="@+id/tv_test"
         android:layout_width="match_parent"

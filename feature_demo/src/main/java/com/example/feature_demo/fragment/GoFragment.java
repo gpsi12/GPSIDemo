@@ -5,6 +5,7 @@ import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,9 +19,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.feature_demo.demoSurfaceView.MySurfaceViewActivity;
 import com.example.feature_demo.R;
+import com.example.feature_demo.demoSurfaceView.CircularSViewActivity;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -30,7 +36,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class GoFragment extends GtFragment {
 
-    private Button bt_insert_cp,bt_threadpe,bt_handler,bt_asynctask;
+    private Button bt_insert_cp,bt_threadpe,bt_handler,bt_asynctask,bt_fail_fast,bt_SureFaceView01,bt_SureFaceV02;
 
     private TextView tv_test;
 
@@ -57,6 +63,9 @@ public class GoFragment extends GtFragment {
         bt_threadpe = view.findViewById(R.id.bt_threadpe);
         bt_handler = view.findViewById(R.id.bt_handler);
         bt_asynctask = view.findViewById(R.id.bt_asynctask);
+        bt_fail_fast = view.findViewById(R.id.bt_fail_fast);
+        bt_SureFaceView01 = view.findViewById(R.id.bt_SureFaceView01);
+        bt_SureFaceV02 = view.findViewById(R.id.bt_SureFaceV02);
 
         tv_test = view.findViewById(R.id.tv_test);
         myHandler = new MyHandler(getActivity());
@@ -133,6 +142,9 @@ public class GoFragment extends GtFragment {
         bt_threadpe.setOnClickListener(this);
         bt_handler.setOnClickListener(this);
         bt_asynctask.setOnClickListener(this);
+        bt_fail_fast.setOnClickListener(this);
+        bt_SureFaceView01.setOnClickListener(this);
+        bt_SureFaceV02.setOnClickListener(this);
 
     }
 
@@ -161,7 +173,104 @@ public class GoFragment extends GtFragment {
         if (view.getId() == R.id.bt_asynctask) {
             testAsyncTask();
         }
+        if (view.getId() == R.id.bt_fail_fast){
+            forfailfast();
+        }
+        if (view.getId() == R.id.bt_SureFaceView01){
+            startActivity(new Intent(getActivity(), CircularSViewActivity.class));
+        }
+        if (view.getId() == R.id.bt_SureFaceV02){
+            startActivity(new Intent(getActivity(), MySurfaceViewActivity.class));
+        }
     }
+
+
+    /**
+     * ConcurrentModificationException 并发修改异常
+     * ArrayList的源码909
+     * final void checkForComodification() {
+     *     if (modCount != expectedModCount)
+     *         thrownew ConcurrentModificationException();
+     * }
+     * 也就是说，remove 的时候执行了 checkForComodification 方法，
+     * 该方法对 modCount 和 expectedModCount 进行了比较，发现两者不等，
+     * 就抛出了 ConcurrentModificationException 异常
+     *
+     * 为什么会执行 checkForComodification 方法呢？ 反编译for each 那段代码
+     * Iterator var3 = list.iterator();
+     *
+     * while (var3.hasNext()) {
+     * 	String str = (String) var3.next();
+     * 	for each 是通过迭代器 Iterator 配合 while 循环实现的
+     *
+     */
+    public void foreachbase(){
+        List<String> list = new ArrayList<>();
+        list.add("0");
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        for (String string : list){
+            if ("2".equals(string)){
+                list.remove(string);
+                //避开 fail-fast,但是有重复元素要删除时，break不太合适。
+                //break;
+            }
+        }
+        Log.i("GPSI",list.toString());
+    }
+
+    /**
+     * 第一次循环的时候，i 为 0，list.size() 为 3，当执行完 remove 方法后，
+     * i 为 1，list.size() 却变成了 2，因为 list 的大小在 remove 后发生了变化，
+     * 也就意味着“沉默王三”这个元素被跳过了。能明白吗？
+     *
+     * remove 之前 list.get(1) 为“沉默王三”；
+     * 但 remove 之后 list.get(1) 变成了“一个文章真特么有趣的程序员”，而 list.get(0) 变成了“沉默王三”。
+     */
+    public void forfailfast(){
+        List<String> list = new ArrayList<>();
+        list.add("0");
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        for (int i = list.size()-1; i >= 0; i--){
+            String s = list.get(i);
+            if ("2".equals(s)){
+                list.remove(s);
+            }
+        }
+    }
+
+    /**
+     * 看remove的源码
+     * 虽然删除元素依然使用的是 ArrayList 的 remove 方法，
+     * 但是删除完会执行 expectedModCount = modCount，保证了 expectedModCount 与 modCount 的同步。
+     */
+    public void iteratorfailfast(){
+        List<String> list = new ArrayList<>();
+        list.add("0");
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        Iterator<String> str = list.iterator();
+        while (str.hasNext()){
+            String s = str.next();
+            if ("2".equals(s)){
+                str.remove();
+            }
+        }
+
+    }
+
+    /**
+     *
+     * @param view
+     */
+    public void bt_fail_fast(View view){
+        //TODO 在Fragment里面 布局生命onClick无效么？
+            Log.i("GPSIIII","---");
+        }
 
     /**
      *

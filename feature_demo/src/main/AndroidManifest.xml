@@ -9,6 +9,8 @@
             android:process=":alonedemo"
             />
         <activity android:name=".ProviderPNumberActivity"/>
+        <activity android:name=".demoSurfaceView.CircularSViewActivity"/>
+        <activity android:name=".demoSurfaceView.MySurfaceViewActivity"/>
 
         <service android:name=".service.DomeService"/>
         <receiver android:name=".MyReceiver">
