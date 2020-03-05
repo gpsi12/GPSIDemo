@@ -12,7 +12,6 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.Window;
 import android.view.WindowManager;
 
 public class MySurfaceViewActivity extends Activity {
@@ -61,6 +60,10 @@ public class MySurfaceViewActivity extends Activity {
         }
     }
 
+    private boolean getIsRunning() {
+        return isRun;
+    }
+
     /**
      * 线程内部类
      */
@@ -68,14 +71,13 @@ public class MySurfaceViewActivity extends Activity {
         private SurfaceHolder holder;
         private MyThread(SurfaceHolder holder) {
             this.holder = holder;
-            isRun = true;
         }
 
         @Override
         public void run() {
             int count = 0;
-            while (isRun) {
-                Log.i("GPSI--：","进入循环"+isRun);
+            while (getIsRunning()) {
+                Log.i("GPSI--：", "进入循环" + getIsRunning());
                 Canvas c = null;
                 try {
 //                    synchronized (holder) {
@@ -89,9 +91,9 @@ public class MySurfaceViewActivity extends Activity {
                             Rect r = new Rect(100, 50, 800, 650);
                             c.drawRect(r, p);
                             p.setColor(Color.BLUE);
+                            p.setTextSize(50f);
                             c.drawText("第" + (count++) + "秒", 200, 200, p);
                             Thread.sleep(1000);
-                            Log.i("GPSI--：","sleep之后"+isRun);
                         }
 //                    }
                 } catch (InterruptedException e) {
@@ -121,9 +123,9 @@ public class MySurfaceViewActivity extends Activity {
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
         isRun = false;
         Log.i("GPSI--：","onDestroy+"+isRun);
+        super.onDestroy();
 
     }
 }
