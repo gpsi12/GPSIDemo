@@ -11,7 +11,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +18,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.feature_demo.demoSurfaceView.MySurfaceViewActivity;
+import androidx.annotation.Nullable;
+
 import com.example.feature_demo.R;
 import com.example.feature_demo.demoSurfaceView.CircularSViewActivity;
+import com.example.feature_demo.demoSurfaceView.MySurfaceViewActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

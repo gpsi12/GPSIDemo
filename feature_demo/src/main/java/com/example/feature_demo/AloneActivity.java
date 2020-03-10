@@ -1,18 +1,17 @@
 package com.example.feature_demo;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.content.LocalBroadcastManager;
 import android.view.View;
 import android.widget.Button;
+
+import androidx.annotation.Nullable;
 
 /**
  * 单开进程的一个Activity
  */
-public class AloneActivity extends Activity {
+public class AloneActivity extends BaseActivity {
 
     private Button abt_alone;
 
@@ -30,5 +29,6 @@ public class AloneActivity extends Activity {
                 sendBroadcast(intent);
             }
         });
+        setStatusBarHeight(findViewById(R.id.activity_alone));
     }
 }

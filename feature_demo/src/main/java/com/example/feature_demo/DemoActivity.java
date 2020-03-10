@@ -1,10 +1,10 @@
 package com.example.feature_demo;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
+
+import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.feature_demo.fragment.GoFragment;
 import com.example.feature_demo.fragment.GtFragment;
@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * Demo模块
  */
-public class DemoActivity extends FragmentActivity {
+public class DemoActivity extends BaseActivity {
 
     private ViewPager mViewPager;
     private BottomView bv_main;
@@ -74,6 +74,7 @@ public class DemoActivity extends FragmentActivity {
                 mViewPager.setCurrentItem(index);
             }
         });
+        setStatusBarHeight(findViewById(R.id.activity_main_demo));
     }
 
     @Override
@@ -124,6 +125,5 @@ public class DemoActivity extends FragmentActivity {
         super.onRestart();
         Log.i("GPSI", "onRestart()-后台切换到前台，不可见到可见-表示Activity重新启动");
     }
-
 
 }

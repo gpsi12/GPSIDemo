@@ -2,8 +2,9 @@ package com.example.feature_demo.demoSurfaceView;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.Window;
+
+import androidx.annotation.Nullable;
 
 public class CircularSViewActivity extends Activity {
 

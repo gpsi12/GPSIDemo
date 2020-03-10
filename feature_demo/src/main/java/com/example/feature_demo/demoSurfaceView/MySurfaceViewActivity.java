@@ -6,13 +6,12 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.WindowManager;
+
+import androidx.annotation.Nullable;
 
 public class MySurfaceViewActivity extends Activity {
     public boolean isRun;
@@ -20,8 +19,6 @@ public class MySurfaceViewActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //状态导航栏透明
-//        setNavigationStatusColor(Color.TRANSPARENT);
 //        requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(new MySurfaceView(this));
     }
@@ -107,20 +104,6 @@ public class MySurfaceViewActivity extends Activity {
             }
         }
     }
-
-    /**
-     * 设置状态栏背景颜色
-     * 透明：Color.TRANSPARENT
-     * @param color
-     */
-    public void setNavigationStatusColor(int color){
-        if (Build.VERSION.SDK_INT >= 21){
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().setNavigationBarColor(color);
-            getWindow().setStatusBarColor(color);
-        }
-    }
-
     @Override
     protected void onDestroy() {
         isRun = false;

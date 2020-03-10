@@ -3,12 +3,13 @@
     <application>
 
         <activity android:name=".DemoActivity"
-            android:theme="@style/Theme.AppCompat"/>
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
 
         <activity android:name=".AloneActivity"
             android:process=":alonedemo"
+            android:theme="@style/Theme.AppCompat"
             />
-        <activity android:name=".ProviderPNumberActivity"/>
+        <activity android:name=".ProviderPNumberActivity" android:theme="@style/Theme.AppCompat"/>
         <activity android:name=".demoSurfaceView.CircularSViewActivity"/>
         <activity android:name=".demoSurfaceView.MySurfaceViewActivity"/>
 

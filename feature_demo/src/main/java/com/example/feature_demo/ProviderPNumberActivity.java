@@ -1,16 +1,16 @@
 package com.example.feature_demo;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * 通过 ContentProvider获取联系人
  */
-public class ProviderPNumberActivity extends Activity {
+public class ProviderPNumberActivity extends BaseActivity {
 
     private ListView mListView;
     private ArrayAdapter mAdaoter;
@@ -36,6 +36,7 @@ public class ProviderPNumberActivity extends Activity {
         mList = new ArrayList<>();
         mAdaoter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1);
         mListView.setAdapter(mAdaoter);
+        setStatusBarHeight(findViewById(R.id.activity_providerpn));
         init();
 
     }
@@ -59,13 +60,13 @@ public class ProviderPNumberActivity extends Activity {
         } else {
             //获取联系人信息
             Cursor cursor1 = getContentResolver().query(ContactsContract
-                    .CommonDataKinds.Phone.CONTENT_URI, new String[]{NUM,NAME}
+                            .CommonDataKinds.Phone.CONTENT_URI, new String[]{NUM, NAME}
                     , null, null, null);
 
             if (cursor1 != null) {
                 while (cursor1.moveToNext()) {
-                    mList.add(cursor1.getString(cursor1.getColumnIndex(NAME))+
-                            ""+cursor1.getString(cursor1.getColumnIndex(NUM)));
+                    mList.add(cursor1.getString(cursor1.getColumnIndex(NAME)) +
+                            "" + cursor1.getString(cursor1.getColumnIndex(NUM)));
                 }
                 mAdaoter.addAll(mList);
                 mAdaoter.notifyDataSetChanged();

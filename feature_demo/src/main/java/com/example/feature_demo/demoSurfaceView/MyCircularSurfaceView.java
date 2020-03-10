@@ -39,7 +39,7 @@ public class MyCircularSurfaceView extends SurfaceView implements Runnable, Surf
 
     /**
      * 当SurfaceView创建时。调用此函数
-     * @param holder
+     * @param holder SurfaceHolder
      */
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
@@ -50,10 +50,6 @@ public class MyCircularSurfaceView extends SurfaceView implements Runnable, Surf
 
     /**
      * 当SurfaceView的视图发生改变的时候，调用此函数
-     * @param holder
-     * @param format
-     * @param width
-     * @param height
      */
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
@@ -62,7 +58,7 @@ public class MyCircularSurfaceView extends SurfaceView implements Runnable, Surf
 
     /**
      * SurfaceView销毁时，调用此函数
-     * @param holder
+     * @param holder SurfaceHolder
      */
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
@@ -71,8 +67,7 @@ public class MyCircularSurfaceView extends SurfaceView implements Runnable, Surf
 
     /**
      * 屏幕背触摸时调用
-     * @param event
-     * @return
+     * @param event MotionEvent
      */
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -83,9 +78,6 @@ public class MyCircularSurfaceView extends SurfaceView implements Runnable, Surf
 
     /**
      * 当用户按键时调用
-     * @param keyCode
-     * @param event
-     * @return
      */
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
