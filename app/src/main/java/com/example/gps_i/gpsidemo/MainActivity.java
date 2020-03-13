@@ -1,10 +1,8 @@
 package com.example.gps_i.gpsidemo;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
@@ -79,30 +77,27 @@ public class MainActivity extends BaseActivity {
         LoginActivity.newIsntance(this);
     }
 
-    /**
-     * 设置状态栏背景颜色
-     * 透明：Color.TRANSPARENT
-     *
-     * @param color
-     */
-    public void setNavigationStatusColor(int color) {
-        if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-            getWindow().setNavigationBarColor(color);
-            getWindow().setStatusBarColor(color);
-        }
-    }
+
+//     * 设置状态栏背景颜色
+//     * @param color 透明：Color.TRANSPARENT
+//    public void setNavigationStatusColor(int color) {
+//        if (Build.VERSION.SDK_INT >= 21) {
+//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//            getWindow().setNavigationBarColor(color);
+//            getWindow().setStatusBarColor(color);
+//        }
+//    }
 
     //反射获取状态栏高度，设置padding
-    public void gsetStatusBarHeight() {
-        int result = 0;
-        //获取状态栏高度的资源id
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            result = getResources().getDimensionPixelSize(resourceId);
-        }
-//        ViewGroup rootView = getWindow().getDecorView().findViewById(R.id.activity_main_app);
-//        rootView.setPadding(0, result, 0, 0);
-
-    }
+//    public void gsetStatusBarHeight() {
+//        int result = 0;
+//        //获取状态栏高度的资源id
+//        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+//        if (resourceId > 0) {
+//            result = getResources().getDimensionPixelSize(resourceId);
+//        }
+////        ViewGroup rootView = getWindow().getDecorView().findViewById(R.id.activity_main_app);
+////        rootView.setPadding(0, result, 0, 0);
+//
+//    }
 }

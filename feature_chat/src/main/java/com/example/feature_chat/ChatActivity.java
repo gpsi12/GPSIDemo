@@ -1,6 +1,7 @@
 package com.example.feature_chat;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -50,6 +51,8 @@ public class ChatActivity extends Activity {
                     msgList.add(msg1);
                     adapter.notifyItemInserted(msgList.size()-1);
                     msgRV.scrollToPosition(msgList.size()-1);
+                }else {
+                    startActivity(new Intent(ChatActivity.this,BindtestAtivity.class));
                 }
             }
         });
