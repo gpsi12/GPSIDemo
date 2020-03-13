@@ -74,7 +74,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void openLogin(View view) {
-        LoginActivity.newIsntance(this);
+        LoginActivity.newInstance(this);
     }
 
 

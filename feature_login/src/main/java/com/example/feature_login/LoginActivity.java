@@ -26,7 +26,7 @@ public class LoginActivity extends Activity implements LoginView {
     private EditText et_username, et_password;
     private TextView tv_result;
 
-    public static void newIsntance(Context context) {
+    public static void newInstance(Context context) {
         context.startActivity(new Intent(context, LoginActivity.class));
     }
 

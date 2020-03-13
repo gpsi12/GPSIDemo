@@ -1,9 +1,11 @@
 package com.example.feature_chat;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.LayoutInflater;
+import android.view.View;
 
 import androidx.annotation.Nullable;
 
@@ -16,14 +18,22 @@ import com.example.feature_chat.databinding.BindtestactBinding;
 public class BindtestAtivity extends Activity {
     private BindtestactBinding bbinding;
 
+    public static void newInstance(Context context){
+        context.startActivity(new Intent(context,BindtestAtivity.class));
+    }
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 //        setContentView(R.layout.bindtestact);
         bbinding = BindtestactBinding.inflate(LayoutInflater.from(this));
         setContentView(bbinding.getRoot());
         bbinding.tvOn.setText("通过View Binding");
-        bbinding.tvDemo.setText("修改控件");
-
+        bbinding.tvT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bbinding.tvDemo.setText("葛葛葛葛葛葛");
+            }
+        });
     }
 }

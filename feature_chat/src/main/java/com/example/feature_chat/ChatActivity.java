@@ -52,7 +52,7 @@ public class ChatActivity extends Activity {
                     adapter.notifyItemInserted(msgList.size()-1);
                     msgRV.scrollToPosition(msgList.size()-1);
                 }else {
-                    startActivity(new Intent(ChatActivity.this,BindtestAtivity.class));
+                    BindtestAtivity.newInstance(ChatActivity.this);
                 }
             }
         });

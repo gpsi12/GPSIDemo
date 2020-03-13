@@ -6,18 +6,19 @@
         android:id="@+id/tv_on"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="👌👌👌👌👌👌👌👌👌👌👌👌👌👌👌👌"
+        android:text="葛葛葛葛葛"
         />
     <TextView
         android:id="@+id/tv_t"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="葛葛葛葛葛葛葛"/>
+        android:padding="15dp"
+        android:text="👌👌👌👌👌👌👌👌👌👌👌👌👌👌👌👌"/>
     <TextView
         android:id="@+id/tv_demo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="葛葛葛葛葛葛葛葛葛"/>
+        android:text="葛"/>
 
 
 </LinearLayout>
