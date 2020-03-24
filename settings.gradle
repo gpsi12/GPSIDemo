@@ -1,1 +1,2 @@
 include ':app', ':feature_demo', ':feature_list', ':feature_chat', ':feature_net', ':feature_login'
+include ':feature_common'
