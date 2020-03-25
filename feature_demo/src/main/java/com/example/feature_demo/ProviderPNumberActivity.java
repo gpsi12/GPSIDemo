@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.feature_common.BaseActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 

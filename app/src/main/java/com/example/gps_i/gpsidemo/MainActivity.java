@@ -8,7 +8,7 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 
 import com.example.feature_chat.ChatActivity;
-import com.example.feature_demo.BaseActivity;
+import com.example.feature_common.BaseActivity;
 import com.example.feature_demo.DemoActivity;
 import com.example.feature_list.RecyclerViewDemoActivity;
 import com.example.feature_login.LoginActivity;

@@ -40,6 +40,7 @@ dependencies {
     implementation project(':feature_chat')
     implementation project(':feature_net')
     implementation project(':feature_login')
+    implementation project(':feature_common')
 
 //    implementation 'com.amap.api:3dmap:latest.integration'
     implementation 'com.amap.api:map2d:latest.integration'

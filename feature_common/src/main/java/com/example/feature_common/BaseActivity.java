@@ -1,4 +1,4 @@
-package com.example.feature_demo;
+package com.example.feature_common;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -6,14 +6,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * 类描述：透明状态栏的Activity
+ * * Created by Gpsi on 2020-03-25.
+ */
 public class BaseActivity extends AppCompatActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (Build.VERSION.SDK_INT >= 23) {
             Window window = getWindow();
             window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -25,7 +29,10 @@ public class BaseActivity extends AppCompatActivity {
         }
     }
 
-    //利用反射获取状态栏高度
+    /**
+     * 利用反射获取状态栏高度
+     * @param rootView 设定标题栏的Padding值
+     */
     public void setStatusBarHeight(View rootView) {
         int result = 0;
         //获取状态栏高度的资源id

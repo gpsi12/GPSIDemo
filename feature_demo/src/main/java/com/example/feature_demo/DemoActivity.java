@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.feature_common.BaseActivity;
 import com.example.feature_demo.fragment.GoFragment;
 import com.example.feature_demo.fragment.GtFragment;
 import com.example.feature_demo.fragment.GthreeFragment;

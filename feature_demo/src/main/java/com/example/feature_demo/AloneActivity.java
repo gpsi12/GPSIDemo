@@ -8,6 +8,8 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 
+import com.example.feature_common.BaseActivity;
+
 /**
  * 单开进程的一个Activity
  */
