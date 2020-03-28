@@ -10,7 +10,6 @@ import com.example.feature_common.BaseActivity;
 import com.example.feature_demo.fragment.GoFragment;
 import com.example.feature_demo.fragment.GtFragment;
 import com.example.feature_demo.fragment.GthreeFragment;
-import com.example.feature_demo.fragment.MyAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,7 @@ import java.util.List;
 public class DemoActivity extends BaseActivity {
 
     private ViewPager mViewPager;
-    private BottomView bv_main;
+//    private BottomView bv_main;
     private List<Fragment> mFragmentList;
 
     @Override
@@ -44,8 +43,8 @@ public class DemoActivity extends BaseActivity {
         mFragmentList.add(new GoFragment());
         mFragmentList.add(new GtFragment());
         mFragmentList.add(new GthreeFragment());
-        MyAdapter myAdapter = new MyAdapter(getSupportFragmentManager(),mFragmentList);
-        mViewPager.setAdapter(myAdapter);
+//        MyAdapter myAdapter = new MyAdapter(getSupportFragmentManager(),mFragmentList);
+//        mViewPager.setAdapter(myAdapter);
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
             @Override
@@ -68,13 +67,13 @@ public class DemoActivity extends BaseActivity {
     private void initView() {
         mViewPager = findViewById(R.id.viewpager);
         mViewPager.setOffscreenPageLimit(2);
-        bv_main = findViewById(R.id.bv_main);
-        bv_main.setOnPageSelectListener(new BottomView.IOnPageSelectedListener() {
-            @Override
-            public void onPageSelect(int index) {
-                mViewPager.setCurrentItem(index);
-            }
-        });
+//        bv_main = findViewById(R.id.bv_main);
+//        bv_main.setOnPageSelectListener(new BottomView.IOnPageSelectedListener() {
+//            @Override
+//            public void onPageSelect(int index) {
+//                mViewPager.setCurrentItem(index);
+//            }
+//        });
         setStatusBarHeight(findViewById(R.id.activity_main_demo));
     }
 

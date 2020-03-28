@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,41 +7,46 @@
     android:background="#FFF8DC"
     tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        <widget.BottomView
+            android:id="@+id/bv_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"/>
+
+<!--        <Button-->
+<!--            android:id="@+id/bt_001"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="cccccc" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/bt_002"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="RecyclerView" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/bt_003"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="聊天" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/bt_004"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="2d地图" />-->
 
         <Button
-            android:id="@+id/bt_001"
-            android:textAllCaps="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="cccccc" />
-
-        <Button
-            android:id="@+id/bt_002"
-            android:textAllCaps="false"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RecyclerView" />
-
-        <Button
-            android:id="@+id/bt_003"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="聊天" />
-
-        <Button
-            android:id="@+id/bt_004"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2d地图" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:visibility="visible"
             android:onClick="openLogin"
             android:text="登录页面" />
-    </LinearLayout>
-</ScrollView>
+</RelativeLayout>

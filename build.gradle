@@ -6,7 +6,6 @@ buildscript {
         google()
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         jcenter()
-        //沉浸式状态栏 https://github.com/Ye-Miao/StatusBarUtil
         maven { url 'https://www.jitpack.io' }
     }
     dependencies {

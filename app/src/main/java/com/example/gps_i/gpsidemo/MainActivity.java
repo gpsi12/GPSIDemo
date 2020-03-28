@@ -6,22 +6,34 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.viewpager.widget.ViewPager;
 
 import com.example.feature_chat.ChatActivity;
 import com.example.feature_common.BaseActivity;
 import com.example.feature_demo.DemoActivity;
+import com.example.feature_demo.fragment.GoFragment;
+import com.example.feature_demo.fragment.GtFragment;
 import com.example.feature_list.RecyclerViewDemoActivity;
 import com.example.feature_login.LoginActivity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import fragment.IndexFragment;
+import fragment.MyAdapter;
+import widget.BottomView;
 
 /**
  * 主模块
  */
 public class MainActivity extends BaseActivity {
 
-    private Button bt_001;
-    private Button bt_002;
-    private Button bt_003;
-    private Button bt_004;
+    private Button bt_001,bt_002,bt_003;
+    private ViewPager mViewPager;
+    private BottomView mBView;
+    private List<Fragment> mFragmentList;
 
     public static boolean isForeground = false;
     public static final String MESSAGE_RECEIVED_ACTION = "com.example.jpushdemo.MESSAGE_RECEIVED_ACTION";
@@ -32,45 +44,76 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bt_001 = findViewById(R.id.bt_001);
-        bt_001.setOnClickListener(new View.OnClickListener() {
+//        bt_001 = findViewById(R.id.bt_001);
+//        bt_001.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, DemoActivity.class);
+//                startActivity(intent);
+////                finish();
+//            }
+//        });
+//        bt_002 = findViewById(R.id.bt_002);
+//        bt_002.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, RecyclerViewDemoActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//        bt_003 = findViewById(R.id.bt_003);
+//        bt_003.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//        bt_003 = findViewById(R.id.bt_004);
+//        bt_003.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this, MapDemoActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+        initview();
+        mFragmentList = new ArrayList<Fragment>();
+        mFragmentList.add(new IndexFragment());
+        mFragmentList.add(new GtFragment());
+
+        MyAdapter myAdapter = new MyAdapter(getSupportFragmentManager(),mFragmentList);
+        mViewPager.setAdapter(myAdapter);
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, DemoActivity.class);
-                startActivity(intent);
-//                finish();
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
             }
         });
-        bt_002 = findViewById(R.id.bt_002);
-        bt_002.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RecyclerViewDemoActivity.class);
-                startActivity(intent);
-            }
-        });
-        bt_003 = findViewById(R.id.bt_003);
-        bt_003.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ChatActivity.class);
-                startActivity(intent);
-            }
-        });
-        bt_003 = findViewById(R.id.bt_004);
-        bt_003.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MapDemoActivity.class);
-                startActivity(intent);
-            }
-        });
-        //StatusBarUtil.setGradientColor(this, mToolbar);
-        //状态导航栏透明
-//        setNavigationStatusColor(Color.TRANSPARENT);
-//        setStatusBarHeight();
+
         setStatusBarHeight(findViewById(R.id.activity_main_app));
 
+    }
+    private void initview(){
+        mViewPager = findViewById(R.id.viewpager);
+        mViewPager.setOffscreenPageLimit(2);
+        mBView = findViewById(R.id.bv_main);
+        mBView.setOnPageSelectListener(new BottomView.IOnPageSelectedListener() {
+            @Override
+            public void onPageSelect(int index) {
+                mViewPager.setCurrentItem(index);
+            }
+        });
     }
 
     public void openLogin(View view) {

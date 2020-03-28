@@ -28,20 +28,21 @@ public class BaseActivity extends AppCompatActivity {
             window.setStatusBarColor(Color.TRANSPARENT);
         }
     }
-
     /**
      * 利用反射获取状态栏高度
      * @param rootView 设定标题栏的Padding值
      */
     public void setStatusBarHeight(View rootView) {
-        int result = 0;
-        //获取状态栏高度的资源id
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0) {
-            result = getResources().getDimensionPixelSize(resourceId);
-        }
+        if (Build.VERSION.SDK_INT >= 23){
+            int result = 0;
+            //获取状态栏高度的资源id
+            int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+            if (resourceId > 0) {
+                result = getResources().getDimensionPixelSize(resourceId);
+            }
 //        ViewGroup rootView = getWindow().getDecorView().findViewById(R.id.activity_main_app);
-        rootView.setPadding(0, result, 0, 0);
+            rootView.setPadding(0, result, 0, 0);
 //        return result;
+        }
     }
 }
