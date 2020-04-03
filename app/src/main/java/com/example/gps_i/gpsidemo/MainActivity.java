@@ -1,21 +1,16 @@
 package com.example.gps_i.gpsidemo;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.feature_chat.ChatActivity;
 import com.example.feature_common.BaseActivity;
-import com.example.feature_demo.DemoActivity;
 import com.example.feature_demo.fragment.GoFragment;
 import com.example.feature_demo.fragment.GtFragment;
-import com.example.feature_list.RecyclerViewDemoActivity;
 import com.example.feature_login.LoginActivity;
 
 import java.util.ArrayList;
@@ -30,7 +25,6 @@ import widget.BottomView;
  */
 public class MainActivity extends BaseActivity {
 
-    private Button bt_001,bt_002,bt_003;
     private ViewPager mViewPager;
     private BottomView mBView;
     private List<Fragment> mFragmentList;
@@ -44,43 +38,16 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        bt_001 = findViewById(R.id.bt_001);
-//        bt_001.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, DemoActivity.class);
-//                startActivity(intent);
-////                finish();
-//            }
-//        });
-//        bt_002 = findViewById(R.id.bt_002);
-//        bt_002.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, RecyclerViewDemoActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        bt_003 = findViewById(R.id.bt_003);
-//        bt_003.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, ChatActivity.class);
-//                startActivity(intent);
-//            }
-//        });
-//        bt_003 = findViewById(R.id.bt_004);
-//        bt_003.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this, MapDemoActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+
+//      Intent intent = new Intent(MainActivity.this, RecyclerViewDemoActivity.class);
+//      Intent intent = new Intent(MainActivity.this, ChatActivity.class);
+//      Intent intent = new Intent(MainActivity.this, MapDemoActivity.class);
+
         initview();
         mFragmentList = new ArrayList<Fragment>();
         mFragmentList.add(new IndexFragment());
         mFragmentList.add(new GtFragment());
+//        mFragmentList.add(new GoFragment());
 
         MyAdapter myAdapter = new MyAdapter(getSupportFragmentManager(),mFragmentList);
         mViewPager.setAdapter(myAdapter);
@@ -116,9 +83,7 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-    public void openLogin(View view) {
-        LoginActivity.newInstance(this);
-    }
+
 
 
 //     * 设置状态栏背景颜色

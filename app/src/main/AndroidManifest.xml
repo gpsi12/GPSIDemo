@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MapDemoActivity"/>
+        <activity android:name="activity.BigviewActivity" android:theme="@style/Theme.AppCompat.NoActionBar"/>
         <meta-data android:name="com.amap.api.v2.apikey" android:value="735619deef65374760f534bcf5950909"/>
         <service
             android:name="cn.jpush.android.service.PushService"

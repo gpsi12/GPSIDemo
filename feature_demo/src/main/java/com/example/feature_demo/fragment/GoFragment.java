@@ -59,7 +59,7 @@ public class GoFragment extends GtFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_go, null);
+        View view = inflater.inflate(R.layout.fragment_go, container,false);
         bt_insert_cp = view.findViewById(R.id.bt_insert_cp);
         bt_threadpe = view.findViewById(R.id.bt_threadpe);
         bt_handler = view.findViewById(R.id.bt_handler);
@@ -138,7 +138,7 @@ public class GoFragment extends GtFragment {
         }
     }
 
-    public void inits() {
+    private void inits() {
         bt_insert_cp.setOnClickListener(this);
         bt_threadpe.setOnClickListener(this);
         bt_handler.setOnClickListener(this);
@@ -205,7 +205,7 @@ public class GoFragment extends GtFragment {
      * 	for each 是通过迭代器 Iterator 配合 while 循环实现的
      *
      */
-    public void foreachbase(){
+    private void foreachbase(){
         List<String> list = new ArrayList<>();
         list.add("0");
         list.add("1");
@@ -229,7 +229,7 @@ public class GoFragment extends GtFragment {
      * remove 之前 list.get(1) 为“沉默王三”；
      * 但 remove 之后 list.get(1) 变成了“一个文章真特么有趣的程序员”，而 list.get(0) 变成了“沉默王三”。
      */
-    public void forfailfast(){
+    private void forfailfast(){
         List<String> list = new ArrayList<>();
         list.add("0");
         list.add("1");
@@ -248,7 +248,7 @@ public class GoFragment extends GtFragment {
      * 虽然删除元素依然使用的是 ArrayList 的 remove 方法，
      * 但是删除完会执行 expectedModCount = modCount，保证了 expectedModCount 与 modCount 的同步。
      */
-    public void iteratorfailfast(){
+    private void iteratorfailfast(){
         List<String> list = new ArrayList<>();
         list.add("0");
         list.add("1");
@@ -266,7 +266,7 @@ public class GoFragment extends GtFragment {
 
     /**
      *
-     * @param view
+     * @param view view
      */
     public void bt_fail_fast(View view){
         //TODO 在Fragment里面 布局生命onClick无效么？
@@ -276,7 +276,7 @@ public class GoFragment extends GtFragment {
     /**
      *
      */
-    public void insertTest() {
+    private void insertTest() {
         ContentResolver resolver = getContext().getContentResolver();
         Uri uri = Uri.parse("content://com.gpsidemo.person/insert");
         ContentValues values = new ContentValues();
@@ -305,7 +305,7 @@ public class GoFragment extends GtFragment {
         private WeakReference<Activity> weakReference;
 
         //在构造方法中传入需持有的Activity实例
-        public MyHandler(Activity activity) {
+        private MyHandler(Activity activity) {
             //使用WeakReference弱引用持有Activity实例
             weakReference = new WeakReference<Activity>(activity);
         }
@@ -378,8 +378,8 @@ public class GoFragment extends GtFragment {
          * 接受输入参数，执行任务中的耗时操作、返回线程任务执行的结果
          * 必须复写，从而定义线程任务
          *
-         * @param strings
-         * @return
+         * @param strings s
+         * @return s
          */
         @Override
         protected String doInBackground(String... strings) {
@@ -399,7 +399,7 @@ public class GoFragment extends GtFragment {
          * 在主线程 显示线程任务执行的进度
          * 据需求复写
          *
-         * @param values
+         * @param values v
          */
         @Override
         protected void onProgressUpdate(Integer... values) {
@@ -431,7 +431,7 @@ public class GoFragment extends GtFragment {
     }
 
 
-    public void testAsyncTask() {
+    private void testAsyncTask() {
         /**
          * 步骤2：
          * 创建AsyncTask子类的实例对象（即 任务实例）
