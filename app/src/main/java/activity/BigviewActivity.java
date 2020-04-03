@@ -15,7 +15,7 @@ import java.io.InputStream;
 import widget.MyBigView;
 
 /**
- * 类描述：
+ * 类描述：展示超大图的activity
  * Created by Gpsi on 2020-04-03.
  */
 public class BigviewActivity extends BaseActivity {
