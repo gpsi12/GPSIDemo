@@ -3,6 +3,7 @@ package com.example.gps_i.gpsidemo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -47,10 +48,11 @@ public class MainActivity extends BaseActivity {
         mFragmentList = new ArrayList<Fragment>();
         mFragmentList.add(new IndexFragment());
         mFragmentList.add(new GtFragment());
-//        mFragmentList.add(new GoFragment());
+        mFragmentList.add(new GoFragment());
 
-        MyAdapter myAdapter = new MyAdapter(getSupportFragmentManager(),mFragmentList);
-        mViewPager.setAdapter(myAdapter);
+//        MyAdapter myAdapter = new MyAdapter(getSupportFragmentManager(),mFragmentList);
+//        mViewPager.setAdapter(myAdapter);
+        mViewPager.setAdapter(new MyAdapter(getSupportFragmentManager(),mFragmentList));
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -59,7 +61,7 @@ public class MainActivity extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
-
+               mBView.btnChangeState(position);
             }
 
             @Override

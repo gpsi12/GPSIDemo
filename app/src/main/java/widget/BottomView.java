@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.gps_i.gpsidemo.R;
 
@@ -50,6 +49,7 @@ public class BottomView extends LinearLayout implements View.OnClickListener {
     }
     public void setOnPageSelectListener(IOnPageSelectedListener listener){
         mListener = listener;
+
     }
 
     public void onClick(View view){
@@ -88,4 +88,26 @@ public class BottomView extends LinearLayout implements View.OnClickListener {
     public interface IOnPageSelectedListener{
         void onPageSelect(int index);
     }
+
+    /**
+     * 宿主activity更改导航按钮状态
+     * @param position 对应id
+     */
+    public void btnChangeState(int position){
+        switch (position){
+            case 0:
+                switcBtnState(iv_index.getId());
+                break;
+            case 1:
+                switcBtnState(iv_class.getId());
+                break;
+            case 2:
+                switcBtnState(iv_mv.getId());
+                break;
+            case 3:
+                switcBtnState(iv_me.getId());
+                break;
+        }
+    }
+
 }

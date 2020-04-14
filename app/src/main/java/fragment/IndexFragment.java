@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,7 +21,6 @@ import activity.BigviewActivity;
  */
 public class IndexFragment extends BaseFragment implements View.OnClickListener {
 
-    private Button bt_gobigv;
     private FragmentIndexBinding fb;
 
     @Nullable
@@ -31,8 +29,6 @@ public class IndexFragment extends BaseFragment implements View.OnClickListener 
 //        return inflater.inflate(R.layout.fragment_index,container,false);
         fb = FragmentIndexBinding.inflate(LayoutInflater.from(mActivity));
 //        View view = inflater.inflate(R.layout.fragment_index,container,false);
-//        bt_gobigv = view.findViewById(R.id.bt_gobigv);
-//        bt_gobigv.setOnClickListener(this);
         fb.btGobigv.setOnClickListener(this);
         return fb.getRoot();
     }
