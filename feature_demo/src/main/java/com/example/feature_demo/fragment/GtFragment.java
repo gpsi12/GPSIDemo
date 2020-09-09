@@ -22,13 +22,15 @@ import com.example.feature_demo.ProviderPNumberActivity;
 import com.example.feature_demo.R;
 import com.example.feature_demo.service.DomeService;
 
+import slide.SlideActivity;
+
 public class GtFragment extends Fragment implements View.OnClickListener {
 
     private boolean mLoadData;
     private boolean isFirstStart;
     private MyReceiver myReceiver;
 
-    private Button sbt_starts,sbt_binds,sbt_stops,sbt_unbind,bt_OPrecess,bt_bdgb,bt_hqlxr;
+    private Button sbt_starts,sbt_binds,sbt_stops,sbt_unbind,bt_OPrecess,bt_bdgb,bt_hqlxr,bt_qqslder;
 
     private String TAG = "GPSI";
 
@@ -85,6 +87,7 @@ public class GtFragment extends Fragment implements View.OnClickListener {
         bt_bdgb = view.findViewById(R.id.bt_bdgb);
         bt_OPrecess = view.findViewById(R.id.bt_OPrecess);
         bt_hqlxr = view.findViewById(R.id.bt_hqlxr);
+        bt_qqslder = view.findViewById(R.id.bt_qqslder);
         init();
         return view;
     }
@@ -197,6 +200,7 @@ public class GtFragment extends Fragment implements View.OnClickListener {
         });
         bt_OPrecess.setOnClickListener(this);
         bt_hqlxr.setOnClickListener(this);
+        bt_qqslder.setOnClickListener(this);
 
     }
 
@@ -209,6 +213,10 @@ public class GtFragment extends Fragment implements View.OnClickListener {
         if (view.getId() == R.id.bt_OPrecess) {
             //单开一个进程
             startActivity(new Intent(getActivity(), AloneActivity.class));
+        }
+        if (view.getId() == R.id.bt_qqslder){
+            //仿qq消息滑动
+            startActivity(new Intent(getActivity(), SlideActivity.class));
         }
     }
 }

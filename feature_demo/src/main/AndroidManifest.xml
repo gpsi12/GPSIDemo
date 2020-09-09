@@ -12,6 +12,7 @@
         <activity android:name=".ProviderPNumberActivity" android:theme="@style/Theme.AppCompat"/>
         <activity android:name=".demoSurfaceView.CircularSViewActivity"/>
         <activity android:name=".demoSurfaceView.MySurfaceViewActivity"/>
+        <activity android:name="slide.SlideActivity" android:theme="@style/Theme.AppCompat"/>
 
         <service android:name=".service.DomeService"/>
         <receiver android:name=".MyReceiver">
